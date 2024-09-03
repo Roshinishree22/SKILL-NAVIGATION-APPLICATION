@@ -1,0 +1,52 @@
+// Common Data Structures
+const users = new Map(); // Stores user data: username -> {password, profile}
+let currentUser = null;  // Stores the currently logged-in user
+const products = [];     // Stores product information
+const reviews = [];      // Stores reviews for locations or products
+
+// Utility Functions
+
+/**
+ * Navigates to a specified page.
+ * @param {string} page - The page identifier or URL to navigate to.
+ */
+function navigateTo(page) {
+    console.log(`Navigating to ${page}`);
+    // Implement actual navigation logic here
+}
+
+/**
+ * Displays a message to the user.
+ * @param {string} message - The message to display.
+ * @param {string} type - The type of message ('success', 'error', 'info').
+ */
+function displayMessage(message, type = 'info') {
+    console.log(`[${type.toUpperCase()}]: ${message}`);
+    // Implement actual UI message display logic here
+}
+
+/**
+ * Validates user input fields.
+ * @param {object} fields - An object containing field names and values.
+ * @returns {boolean} - Returns true if all fields are valid, false otherwise.
+ */
+function validateFields(fields) {
+    for (const [field, value] of Object.entries(fields)) {
+        if (!value || value.trim() === '') {
+            displayMessage(`Field ${field} cannot be empty.`, 'error');
+            return false;
+        }
+    }
+    return true;
+}
+
+/**
+ * Fetches data asynchronously (e.g., from an API or database).
+ * @param {string} endpoint - The data endpoint to fetch from.
+ * @returns {Promise<any>} - Returns a promise that resolves to the fetched data.
+ */
+async function fetchData(endpoint) {
+    console.log(`Fetching data from ${endpoint}`);
+    // Implement actual data fetching logic here
+    return {}; // Placeholder return
+}
