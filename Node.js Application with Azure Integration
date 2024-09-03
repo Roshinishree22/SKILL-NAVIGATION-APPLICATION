@@ -1,0 +1,91 @@
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = process.env.PORT || 3000;
+
+// Azure Blob Storage setup
+const { BlobServiceClient } = require('@azure/storage-blob');
+const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING || 'YourAzureStorageConnectionStringHere';
+const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
+const containerName = 'public';
+
+async function uploadToBlobStorage(localFilePath, blobName) {
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+    await blockBlobClient.uploadFile(localFilePath);
+    console.log(`File uploaded to Azure Blob Storage: ${blobName}`);
+}
+
+// Serve static files like images, CSS, and JavaScript
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Middleware to parse request body
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'hello.html'));
+});
+
+app.get('/sign', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'sign.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'login.html'));
+});
+
+app.get('/profile', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'profile.html'));
+});
+
+app.get('/settings', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'settings.html'));
+});
+
+app.get('/start', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'start.html'));
+});
+
+app.get('/view-around', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'view-around.html'));
+});
+
+app.get('/review-around', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'review-around.html'));
+});
+
+app.get('/menu', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'menu.html'));
+});
+
+app.get('/3dtour', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', '3dtour.html'));
+});
+
+app.get('/product', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'product.html'));
+});
+
+app.get('/product-detail', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'product-detail.html'));
+});
+
+app.get('/store', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'store.html'));
+});
+
+// Upload files to Azure Blob Storage (run this only once or when files change)
+async function uploadAssets() {
+    await uploadToBlobStorage(path.join(__dirname, 'public', 'images', 'your-image.jpg'), 'images/your-image.jpg');
+    await uploadToBlobStorage(path.join(__dirname, 'public', 'css', 'styles.css'), 'css/styles.css');
+    await uploadToBlobStorage(path.join(__dirname, 'public', 'js', 'scripts.js'), 'js/scripts.js');
+}
+
+// Uncomment this line to upload assets when starting the app
+// uploadAssets();
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
