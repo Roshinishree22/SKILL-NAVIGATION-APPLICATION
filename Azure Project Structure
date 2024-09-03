@@ -1,0 +1,23 @@
+/project-directory
+  /public
+    /images (store your images here, served from Azure Blob Storage)
+    /css (store your CSS files here)
+    /js (store your JavaScript files here)
+  /views
+    hello.html
+    sign.html
+    login.html
+    profile.html
+    settings.html
+    start.html
+    view-around.html
+    review-around.html
+    menu.html
+    3dtour.html
+    product.html
+    product-detail.html
+    store.html
+  app.js (Node.js server file)
+  azure-config.js (Configuration for Azure services)
+  package.json
+  README.md
