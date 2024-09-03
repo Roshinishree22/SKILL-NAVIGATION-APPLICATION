@@ -1,0 +1,106 @@
+docker build -t vr-navigation-app .
+docker run -p 3000:3000 vr-navigation-app
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = process.env.PORT || 3000;
+
+// Serve static files like images, CSS, and JavaScript
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Middleware to parse request body
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'hello.html'));
+});
+
+app.get('/sign', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'sign.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'login.html'));
+});
+
+app.get('/profile', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'profile.html'));
+});
+
+app.get('/settings', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'settings.html'));
+});
+
+app.get('/start', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'start.html'));
+});
+
+app.get('/view-around', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'view-around.html'));
+});
+
+app.get('/review-around', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'review-around.html'));
+});
+
+app.get('/menu', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'menu.html'));
+});
+
+app.get('/3dtour', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', '3dtour.html'));
+});
+
+app.get('/product', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'product.html'));
+});
+
+app.get('/product-detail', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'product-detail.html'));
+});
+
+app.get('/store', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'store.html'));
+});
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
+# Use the official Node.js 18 image as a base
+FROM node:18
+
+# Set the working directory inside the container
+WORKDIR /usr/src/app
+
+# Copy the package.json and package-lock.json{
+  "name": "vr-navigation-app",
+  "version": "1.0.0",
+  "description": "A VR Navigation Application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+
+COPY package*.json ./
+
+# Install the dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose the port on which the application will run
+EXPOSE 3000
+
+# Start the application
+CMD ["node", "app.js"]
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
