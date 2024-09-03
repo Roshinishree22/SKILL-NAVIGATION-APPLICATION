@@ -1,0 +1,169 @@
+<link rel="stylesheet" href="styles.css">
+/* General Styles for All Pages */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin: 10px 0 5px;
+}
+
+input, textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 80%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Hello Page Styles */
+#hello-page img {
+    width: 300px;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* Sign-Up and Login Page Styles */
+#sign-page, #login-page {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Profile Page Styles */
+#profile-page img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+#profile-page p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Settings Page Styles */
+#settings-page form {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Start Page Styles */
+#start-page button {
+    width: 200px;
+}
+
+/* View Around Page Styles */
+#view-around-page img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+/* Review Around Page Styles */
+#review-around-page form {
+    width: 100%;
+    max-width: 600px;
+}
+
+textarea {
+    height: 100px;
+}
+
+/* Menu Page Styles */
+#menu-page button {
+    width: 250px;
+    margin: 20px 0;
+}
+
+/* 3D Tour Page Styles */
+#3d-tour-page {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Product Page Styles */
+#product-page img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+#product-page div {
+    display: inline-block;
+    text-align: center;
+    margin: 20px;
+}
+
+/* Product Detail Page Styles */
+#product-detail-page img {
+    width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+/* Store Page Styles */
+#store-page button {
+    width: 250px;
+    margin: 20px 0;
+}
